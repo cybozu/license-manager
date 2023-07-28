@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "foo": "*",
+    "bar": "*",
+    "baz": "*"
+  },
+  "devDependencies": {
+    "@dev/foo": "*",
+    "@dev/bar": "*",
+    "@dev/baz": "*"
+  }
+}

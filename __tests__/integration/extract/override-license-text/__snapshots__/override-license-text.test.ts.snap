@@ -1,0 +1,17 @@
+// Vitest Snapshot v1
+
+exports[`extract : override-license-text > extract all licenses with overrideLicenseText option 1`] = `
+"bar
+license: BSD
+BAR_LICENSE_TEXT
+
+
+baz
+license: Apache-2.0
+BAZ_LICENSE_TEXT
+
+
+foo
+license: MIT
+FOO_LICENSE_TEXT"
+`;

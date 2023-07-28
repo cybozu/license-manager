@@ -1,0 +1,11 @@
+__mocks__/
+__tests__/
+src/
+.commitlintrc.js
+.eslintignore
+.eslintrc.js
+.prettierrc
+FOR_DEVELOPMENT.md
+tsconfig.json
+tsconfig.build.json
+vitest.config.ts

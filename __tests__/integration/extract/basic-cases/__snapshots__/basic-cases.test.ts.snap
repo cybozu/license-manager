@@ -1,0 +1,75 @@
+// Vitest Snapshot v1
+
+exports[`extract : basic-cases > can specify query 1`] = `
+"@dev/bar
+license: BSD
+@dev/bar - license text - line1
+@dev/bar - license text - line2
+
+
+
+@dev/baz
+license: Apache-2.0
+@dev/baz - license text - line1
+@dev/baz - license text - line2
+
+
+
+@dev/foo
+license: MIT
+@dev/foo - license text - line1
+@dev/foo - license text - line2
+"
+`;
+
+exports[`extract : basic-cases > extract all licenses 1`] = `
+"bar
+license: BSD
+bar - license text - line1
+bar - license text - line2
+
+
+
+baz
+license: Apache-2.0
+baz - license text - line1
+baz - license text - line2
+
+
+
+foo
+license: MIT
+foo - license text - line1
+foo - license text - line2
+"
+`;
+
+exports[`extract : basic-cases > extract licenses by excluding specified packages 1`] = `
+"bar
+license: BSD
+bar - license text - line1
+bar - license text - line2
+
+
+
+foo
+license: MIT
+foo - license text - line1
+foo - license text - line2
+"
+`;
+
+exports[`extract : basic-cases > extract specified licenses 1`] = `
+"baz
+license: Apache-2.0
+baz - license text - line1
+baz - license text - line2
+
+
+
+foo
+license: MIT
+foo - license text - line1
+foo - license text - line2
+"
+`;
