@@ -186,10 +186,3 @@ module.exports = {
   },
 };
 ```
-
-## Development
-
-```
-$ npx tsx src/cli.ts analyze
-$ npx tsx src/cli.ts extract
-```
