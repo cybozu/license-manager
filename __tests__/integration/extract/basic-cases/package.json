@@ -2,7 +2,8 @@
   "dependencies": {
     "foo": "*",
     "bar": "*",
-    "baz": "*"
+    "baz": "*",
+    "qux": "*"
   },
   "devDependencies": {
     "@dev/foo": "*",

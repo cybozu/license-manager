@@ -41,6 +41,13 @@ foo
 license: MIT
 foo - license text - line1
 foo - license text - line2
+
+
+
+qux
+license: MIT
+qux - license text - line1
+qux - license text - line2
 "
 `;
 
@@ -56,6 +63,13 @@ foo
 license: MIT
 foo - license text - line1
 foo - license text - line2
+
+
+
+qux
+license: MIT
+qux - license text - line1
+qux - license text - line2
 "
 `;
 
@@ -71,5 +85,12 @@ foo
 license: MIT
 foo - license text - line1
 foo - license text - line2
+
+
+
+qux
+license: MIT
+qux - license text - line1
+qux - license text - line2
 "
 `;

@@ -47,10 +47,10 @@ export const getLicenseText = async (
   }
 
   // TODO: read the file specified by "SEE LICENSE IN"
-  const licensePattern = `${depPath}/LICEN@(S|C)E?(.*)`;
+  const licensePattern = `${depPath}/LICEN@(S|C)E?(-MIT)?(.*)`;
 
   const res = glob.sync(licensePattern, { nocase: true });
-  if (res.length) {
+  if (res.length === 1) {
     return {
       licenseTextPath: res[0],
       licenseText: readFile(res[0]),
