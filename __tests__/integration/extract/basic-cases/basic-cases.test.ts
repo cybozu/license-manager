@@ -19,6 +19,7 @@ describe("extract : basic-cases", () => {
   });
 
   const extractDefaultOption: ExtractArgs = {
+    packageManager: "npm",
     workspace: "",
     cwd: __dirname,
     query: "",

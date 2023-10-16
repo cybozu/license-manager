@@ -10,7 +10,7 @@ describe("analyze : basic-cases", () => {
     consoleMock();
   });
 
-  const analyzeDefaultOption = { workspace: "", cwd: __dirname, query: "" };
+  const analyzeDefaultOption = { packageManager: "npm", workspace: "", cwd: __dirname, query: "" };
 
   it("allow all licenses with allowLicense option", async () => {
     await analyze({
