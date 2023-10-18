@@ -1,0 +1,2 @@
+foo - license text - line1
+foo - license text - line2
