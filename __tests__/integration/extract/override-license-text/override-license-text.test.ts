@@ -19,6 +19,7 @@ describe("extract : override-license-text", () => {
   });
 
   const extractDefaultOption: ExtractArgs = {
+    packageManager: "npm",
     workspace: "",
     cwd: __dirname,
     query: "",

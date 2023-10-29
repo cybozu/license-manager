@@ -5,6 +5,7 @@ import { aggregate } from "./functions/aggregate";
 import { isMatchLicense, isMatchPackage } from "./functions/depsUtils";
 import { loadConfigScript } from "./functions/loadConfigScript";
 import { Config, Dependency } from "./types";
+import { detectPackageManager } from "./functions/detectPackageManager";
 
 export type ExtractArgs = {
   workspace: string;
@@ -14,6 +15,7 @@ export type ExtractArgs = {
   excludePackages: Array<string | RegExp>;
   output: string;
   json: boolean;
+  packageManager: string;
 };
 
 export const extract = async (cliArgs: ExtractArgs) => {
@@ -21,7 +23,14 @@ export const extract = async (cliArgs: ExtractArgs) => {
 
   const config = await loadConfigScript();
   const args = mergeConfig(cliArgs, config);
-  const dependencies = await aggregate(args.query, args.cwd, args.workspace, args.excludePackages, config);
+  const dependencies = await aggregate(
+    args.packageManager,
+    args.query,
+    args.cwd,
+    args.workspace,
+    args.excludePackages,
+    config
+  );
 
   const targetDependencies = dependencies.filter((dep) => {
     if (args.extractLicenses.length && !args.extractLicenses.some((pattern) => isMatchLicense(dep, pattern))) {
@@ -65,6 +74,7 @@ const mergeConfig = (args: ExtractArgs, config: Partial<Config>): ExtractArgs =>
     excludePackages: [...args.excludePackages, ...(config.extract?.excludePackages || [])],
     output: args.output || config.extract?.output || "",
     json: args.json || config.extract?.format === "json",
+    packageManager: args.packageManager || config.packageManager || detectPackageManager(),
   };
 };
 

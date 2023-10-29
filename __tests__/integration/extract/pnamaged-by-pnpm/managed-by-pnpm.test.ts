@@ -4,11 +4,18 @@ import { processMock } from "__tests__/helpers/processMock";
 import { fs as memfs, vol } from "memfs";
 import path from "path";
 import pc from "picocolors";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import { promisify } from "node:util";
+import { exec as actualExec } from "node:child_process";
 
 vi.mock("fs");
 
-describe("extract : basic-cases", () => {
+describe("extract : managed-by-pnpm", () => {
+  beforeAll(async () => {
+    const exec = promisify(actualExec);
+    // install local packages
+    await exec(`pnpm i`, { cwd: __dirname });
+  });
   beforeEach(() => {
     processMock(__dirname);
     consoleMock();
@@ -19,7 +26,7 @@ describe("extract : basic-cases", () => {
   });
 
   const extractDefaultOption: ExtractArgs = {
-    packageManager: "npm",
+    packageManager: "pnpm",
     workspace: "",
     cwd: __dirname,
     query: "",
@@ -65,34 +72,13 @@ describe("extract : basic-cases", () => {
     expect(memfs.readFileSync(expectedOutputPath).toString("utf-8")).toMatchSnapshot();
   });
 
-  it("license text not found in some packages", async () => {
+  it("query option is not available", async () => {
     await expect(() =>
       extract({
         ...extractDefaultOption,
-        query: ":root > [name^=@invalid/]",
+        query: ":root > [name^=@dev/]",
       })
-    ).rejects.toThrowError("process.exit()");
-
-    const expectedOutputPath = path.resolve(__dirname, "licenses.txt");
-
-    expect(console.error).toBeCalledWith(pc.red("🚨 License text not found"));
-    expect(console.error).toBeCalledWith(pc.red("@invalid/baz@1.2.3"));
-    expect(console.error).toBeCalledWith(pc.red("@invalid/foo@1.2.3"));
-
-    expect(memfs.existsSync(expectedOutputPath)).toBe(false);
-  });
-
-  it("can specify query", async () => {
-    await extract({
-      ...extractDefaultOption,
-      query: ":root > [name^=@dev/]",
-    });
-
-    const expectedOutputPath = path.resolve(__dirname, "licenses.txt");
-
-    expect(console.log).toBeCalledWith(pc.green(`✅ Extracted to ${expectedOutputPath}`));
-
-    expect(memfs.readFileSync(expectedOutputPath).toString("utf-8")).toMatchSnapshot();
+    ).rejects.toThrowError("query cannot be specified when the package manager is pnpm.");
   });
 
   it("output in json format", async () => {
@@ -109,12 +95,11 @@ describe("extract : basic-cases", () => {
 
     const matchPattern = expect.objectContaining({
       name: expect.any(String),
-      version: expect.any(String),
       license: expect.any(String),
       path: expect.any(String),
-      realpath: expect.any(String),
       licenseTextPath: expect.any(String),
       licenseText: expect.any(String),
+      // In the case of pnpm, local packages do not have version information, it does not have `version:`
     });
 
     expect(json[0]).toMatchObject(matchPattern);

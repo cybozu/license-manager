@@ -1,0 +1,12 @@
+{
+  "license": "MIT",
+  "engines": {
+    "pnpm": ">=8.10.0"
+  },
+  "dependencies": {
+    "bar": "file:local-packages/bar",
+    "baz": "file:local-packages/baz",
+    "foo": "file:local-packages/foo",
+    "qux": "file:local-packages/qux"
+  }
+}

@@ -3,6 +3,7 @@ import { aggregate } from "./functions/aggregate";
 import { getLicense, isMatchLicense, isMatchPackage } from "./functions/depsUtils";
 import { loadConfigScript } from "./functions/loadConfigScript";
 import { Config, Dependency } from "./types";
+import { detectPackageManager } from "./functions/detectPackageManager";
 
 export type AnalyzeArgs = {
   workspace: string;
@@ -10,6 +11,7 @@ export type AnalyzeArgs = {
   cwd: string;
   allowLicenses: Array<string | RegExp>;
   allowPackages: Array<string | RegExp>;
+  packageManager: string;
 };
 
 export const analyze = async (cliArgs: AnalyzeArgs) => {
@@ -18,7 +20,14 @@ export const analyze = async (cliArgs: AnalyzeArgs) => {
   const config = await loadConfigScript();
   const args = mergeConfig(cliArgs, config);
   const unreadLicenseTextPattern = [/.*/];
-  const dependencies = await aggregate(args.query, args.cwd, args.workspace, unreadLicenseTextPattern, config);
+  const dependencies = await aggregate(
+    args.packageManager,
+    args.query,
+    args.cwd,
+    args.workspace,
+    unreadLicenseTextPattern,
+    config
+  );
 
   const errors: Array<{ name: string; license: string }> = [];
 
@@ -47,6 +56,7 @@ const mergeConfig = (args: AnalyzeArgs, config: Partial<Config>): AnalyzeArgs =>
     workspace: args.workspace || config.workspace || "",
     allowLicenses: [...args.allowLicenses, ...(config.analyze?.allowLicenses || [])],
     allowPackages: [...args.allowPackages, ...(config.analyze?.allowPackages || [])],
+    packageManager: args.packageManager || config.packageManager || detectPackageManager(),
   };
 };
 
