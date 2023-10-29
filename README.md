@@ -5,7 +5,7 @@ license-manager is a CLI license management tool for npm dependencies.
 ## Requirement
 
 node >= v18.14.0  
-npm >= v9.3.1 (need `npm query`) or pnpm >= v8.9.3
+npm >= v9.3.1 (need `npm query`) or pnpm >= v8.10.0
 
 ## Install
 
