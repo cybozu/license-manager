@@ -4,8 +4,8 @@ license-manager is a CLI license management tool for npm dependencies.
 
 ## Requirement
 
-node >= v18.14.0
-npm >= v9.3.1 (need `npm query`)
+node >= v18.14.0  
+npm >= v9.3.1 (need `npm query`) or pnpm >= v8.10.0
 
 ## Install
 
@@ -46,6 +46,8 @@ license-manager extract -q ".prod" -w . -l MIT -l ISC -p "@types/*" -p "react@*"
 Query string for npm query.  
 license-manager uses [npm query](https://docs.npmjs.com/cli/v8/commands/npm-query) to search packages.
 
+Attention: If the package manager is `pnpm`, it cannot be specified; it is the same as `":root *"` for analyze and `":root .prod"` for extract.
+
 #### `--cwd`
 
 **default: (empty / process.cwd())**
@@ -58,6 +60,13 @@ Current working directory for npm query.
 
 Option for [`workspace` option](https://docs.npmjs.com/cli/v8/commands/npm-query#workspace) of npm query.
 
+#### `-m`, `--packageManager`
+
+**default: (empty / Automatically detects)**
+
+Specify which package manager to use `npm` or `pnpm`.
+Automatically detected if you are running the command with `npm run`, `npx`, or `pnpm run`.
+
 ### Options for `analyze` command
 
 #### `-l`, `--allowLicense`
@@ -67,7 +76,7 @@ Option for [`workspace` option](https://docs.npmjs.com/cli/v8/commands/npm-query
 Permitted license name.  
 If any package is found for which this option is not specified, `analyze` command will output errors.
 
-#### `-p`, `allowPackage`
+#### `-p`, `--allowPackage`
 
 **default: (ignored)**
 

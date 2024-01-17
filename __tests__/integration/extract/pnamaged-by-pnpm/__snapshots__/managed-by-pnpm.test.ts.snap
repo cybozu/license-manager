@@ -1,0 +1,74 @@
+// Vitest Snapshot v1
+
+exports[`extract : managed-by-pnpm > extract all licenses 1`] = `
+"bar
+license: BSD
+bar - license text - line1
+bar - license text - line2
+
+
+
+baz
+license: Apache-2.0
+baz - license text - line1
+baz - license text - line2
+
+
+
+foo
+license: MIT
+foo - license text - line1
+foo - license text - line2
+
+
+
+qux
+license: MIT
+qux - license text - line1
+qux - license text - line2
+"
+`;
+
+exports[`extract : managed-by-pnpm > extract licenses by excluding specified packages 1`] = `
+"bar
+license: BSD
+bar - license text - line1
+bar - license text - line2
+
+
+
+foo
+license: MIT
+foo - license text - line1
+foo - license text - line2
+
+
+
+qux
+license: MIT
+qux - license text - line1
+qux - license text - line2
+"
+`;
+
+exports[`extract : managed-by-pnpm > extract specified licenses 1`] = `
+"baz
+license: Apache-2.0
+baz - license text - line1
+baz - license text - line2
+
+
+
+foo
+license: MIT
+foo - license text - line1
+foo - license text - line2
+
+
+
+qux
+license: MIT
+qux - license text - line1
+qux - license text - line2
+"
+`;

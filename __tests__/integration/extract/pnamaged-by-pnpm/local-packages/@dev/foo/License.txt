@@ -1,0 +1,2 @@
+@dev/foo - license text - line1
+@dev/foo - license text - line2

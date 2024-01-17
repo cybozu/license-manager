@@ -1,0 +1,59 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+dependencies:
+  bar:
+    specifier: file:local-packages/bar
+    version: file:local-packages/bar
+  baz:
+    specifier: file:local-packages/baz
+    version: file:local-packages/baz
+  foo:
+    specifier: file:local-packages/foo
+    version: file:local-packages/foo
+
+devDependencies:
+  '@dev/bar':
+    specifier: file:local-packages/@dev/bar
+    version: file:local-packages/@dev/bar
+  '@dev/baz':
+    specifier: file:local-packages/@dev/baz
+    version: file:local-packages/@dev/baz
+  '@dev/foo':
+    specifier: file:local-packages/@dev/foo
+    version: file:local-packages/@dev/foo
+
+packages:
+
+  file:local-packages/@dev/bar:
+    resolution: {directory: local-packages/@dev/bar, type: directory}
+    name: '@dev/bar'
+    dev: true
+
+  file:local-packages/@dev/baz:
+    resolution: {directory: local-packages/@dev/baz, type: directory}
+    name: '@dev/baz'
+    dev: true
+
+  file:local-packages/@dev/foo:
+    resolution: {directory: local-packages/@dev/foo, type: directory}
+    name: '@dev/foo'
+    dev: true
+
+  file:local-packages/bar:
+    resolution: {directory: local-packages/bar, type: directory}
+    name: bar
+    dev: false
+
+  file:local-packages/baz:
+    resolution: {directory: local-packages/baz, type: directory}
+    name: baz
+    dev: false
+
+  file:local-packages/foo:
+    resolution: {directory: local-packages/foo, type: directory}
+    name: foo
+    dev: false

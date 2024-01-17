@@ -2,15 +2,22 @@ import { analyze } from "@/analyze";
 import { consoleMock } from "__tests__/helpers/consoleMock";
 import { processMock } from "__tests__/helpers/processMock";
 import pc from "picocolors";
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { exec as actualExec } from "node:child_process";
+import { promisify } from "node:util";
 
-describe("analyze : basic-cases", () => {
+describe("analyze : managed-by-pnpm", () => {
+  beforeAll(async () => {
+    const exec = promisify(actualExec);
+    // install local packages
+    await exec(`pnpm i`, { cwd: __dirname });
+  });
   beforeEach(() => {
     processMock(__dirname);
     consoleMock();
   });
 
-  const analyzeDefaultOption = { packageManager: "npm", workspace: "", cwd: __dirname, query: "" };
+  const analyzeDefaultOption = { packageManager: "pnpm", workspace: "", cwd: __dirname, query: "" };
 
   it("allow all licenses with allowLicense option", async () => {
     await analyze({
@@ -26,7 +33,8 @@ describe("analyze : basic-cases", () => {
     await analyze({
       ...analyzeDefaultOption,
       allowLicenses: [],
-      allowPackages: ["foo", "bar@*", "baz@1.2.3", "@dev/*"],
+      // In the case of pnpm, local packages do not have version information, so baz@1.2.3 cannot be tested.
+      allowPackages: ["foo", "bar@*", "baz@*", "@dev/*"],
     });
 
     expect(console.log).toBeCalledWith(pc.green("✅ All dependencies confirmed"));
@@ -64,14 +72,14 @@ describe("analyze : basic-cases", () => {
     ]);
   });
 
-  it("can specify query", async () => {
-    await analyze({
-      ...analyzeDefaultOption,
-      query: ":root > [name^=@dev/]",
-      allowLicenses: [],
-      allowPackages: ["@dev/*"],
-    });
-
-    expect(console.log).toBeCalledWith(pc.green("✅ All dependencies confirmed"));
+  it("query option is not available", async () => {
+    await expect(() =>
+      analyze({
+        ...analyzeDefaultOption,
+        query: ":root > [name^=@dev/]",
+        allowLicenses: [],
+        allowPackages: ["@dev/*"],
+      })
+    ).rejects.toThrowError("query cannot be specified when the package manager is pnpm.");
   });
 });

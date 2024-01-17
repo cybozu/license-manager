@@ -10,7 +10,7 @@ describe("analyze : override-licenses", () => {
     consoleMock();
   });
 
-  const analyzeDefaultOption = { workspace: "", cwd: __dirname, query: "" };
+  const analyzeDefaultOption = { packageManager: "npm", workspace: "", cwd: __dirname, query: "" };
 
   it("allow all licenses with allowLicense and overrideLicense options", async () => {
     await analyze({

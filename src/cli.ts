@@ -15,6 +15,7 @@ program
   )
   .option("-l, --allowLicense <string...>", "allow licenses")
   .option("-p, --allowPackage <string...>", "allow packages (allowed without license)")
+  .option("-m, --packageManager <npm|pnpm>", "package manager used to analyze licenses (default: auto detect)")
   .action((options) => {
     analyze({
       workspace: options.workspace || "",
@@ -22,6 +23,7 @@ program
       query: options.query,
       allowLicenses: options.allowLicense || [],
       allowPackages: options.allowPackage || [],
+      packageManager: options.packageManager || "",
     });
   });
 
@@ -38,6 +40,7 @@ program
   .option("-p, --excludePackage <string...>", "packages to be excluded from extraction")
   .option("-o, --output <string>", "output file name")
   .option("--json", "output in JSON format")
+  .option("-m, --packageManager <npm|pnpm>", "package manager used to extract licenses (default: auto detect)")
   .action((options) => {
     extract({
       workspace: options.workspace || "",
@@ -47,6 +50,7 @@ program
       excludePackages: options.excludePackage || [],
       output: options.output || "",
       json: !!options.json,
+      packageManager: options.packageManager || "",
     });
   });
 

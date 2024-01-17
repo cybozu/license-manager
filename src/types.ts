@@ -7,6 +7,19 @@ export type RawDependency = {
   path: string;
 };
 
+export type RawPnpmLicenses = Record<
+  string,
+  Array<{
+    name: string;
+    version: string;
+    path: string;
+    license: string;
+    author: string;
+    homepage: string;
+    description: string;
+  }>
+>;
+
 export type Dependency = RawDependency & {
   licenseText: string;
   apacheNotice?: string;
@@ -15,6 +28,7 @@ export type Dependency = RawDependency & {
 export type Config = {
   cwd?: string;
   workspace?: string;
+  packageManager?: "npm" | "pnpm";
   analyze?: {
     query?: string;
     allowLicenses?: Array<string | RegExp>;

@@ -1,0 +1,16 @@
+{
+  "license": "MIT",
+  "engines": {
+    "pnpm": ">=8.10.0"
+  },
+  "dependencies": {
+    "bar": "file:local-packages/bar",
+    "baz": "file:local-packages/baz",
+    "foo": "file:local-packages/foo"
+  },
+  "devDependencies": {
+    "@dev/bar": "file:local-packages/@dev/bar",
+    "@dev/baz": "file:local-packages/@dev/baz",
+    "@dev/foo": "file:local-packages/@dev/foo"
+  }
+}

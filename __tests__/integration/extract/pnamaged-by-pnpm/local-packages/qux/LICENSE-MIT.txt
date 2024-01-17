@@ -1,0 +1,2 @@
+qux - license text - line1
+qux - license text - line2

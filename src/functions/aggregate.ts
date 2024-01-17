@@ -1,16 +1,25 @@
 import { Config, Dependency } from "../types";
 import { getLicense, isMatchPackage } from "./depsUtils";
-import { getDependencies } from "./getDependencies";
+import { getDependenciesForNpm, getDependenciesForPnpm } from "./getDependencies";
 import { getApacheNotice, getLicenseText } from "./getLicenseText";
 
 export const aggregate = async (
+  packageManager: string,
   query: string,
   cwd: string,
   workspace: string,
   unreadLicenseTextPattern: Array<string | RegExp>,
   config: Config
 ): Promise<Dependency[]> => {
-  const deps = await getDependencies(query, cwd, workspace);
+  let deps;
+  if (packageManager === "pnpm") {
+    if (![":root *", ":root .prod"].includes(query))
+      throw new Error("query cannot be specified when the package manager is pnpm.");
+    const option = query.includes(".prod") ? "-P" : "";
+    deps = await getDependenciesForPnpm(option, cwd, workspace);
+  } else {
+    deps = await getDependenciesForNpm(query, cwd, workspace);
+  }
 
   return Promise.all(
     deps.map(async (dep: any): Promise<Dependency> => {
