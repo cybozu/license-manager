@@ -67,6 +67,12 @@ Option for [`workspace` option](https://docs.npmjs.com/cli/v8/commands/npm-query
 Specify which package manager to use `npm` or `pnpm`.
 Automatically detected if you are running the command with `npm run`, `npx`, or `pnpm run`.
 
+#### `-c`, `--config`
+
+**default: (./license-manager.config.js)**
+
+Config file path.
+
 ### Options for `analyze` command
 
 #### `-l`, `--allowLicense`
@@ -132,6 +138,7 @@ Based on the results of npm query, and some fields be added.
 
 You can write all settings to `license-manager.config.js`.  
 If `license-manager.config.js` exists in the current directory, it is automatically loaded.  
+You can change the file path with the --config option.
 CLI options take precedence, but license and package specifications are merged.  
 And you can also specify a override function in case the license and license text cannot be detected.
 
