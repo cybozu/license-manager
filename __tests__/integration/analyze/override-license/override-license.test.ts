@@ -20,5 +20,19 @@ describe("analyze : override-licenses", () => {
     });
 
     expect(console.log).toBeCalledWith(pc.green("✅ All dependencies confirmed"));
+    expect(console.log).toBeCalledWith("💡 Detected license-manager.config.js");
+  });
+
+  it("apply specified config file", async () => {
+    await analyze({
+      ...analyzeDefaultOption,
+      allowLicenses: ["OVERRIDE_LICENSE"],
+      allowPackages: [],
+      configFilePath: "awesome-config.js",
+    });
+
+    expect(console.log).toBeCalledWith(pc.green("✅ All dependencies confirmed"));
+    expect(console.log).toBeCalledWith("💡 Detected awesome-config.js");
+    expect(console.log).toBeCalledWith("load awesome-config.js");
   });
 });

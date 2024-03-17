@@ -16,6 +16,7 @@ program
   .option("-l, --allowLicense <string...>", "allow licenses")
   .option("-p, --allowPackage <string...>", "allow packages (allowed without license)")
   .option("-m, --packageManager <npm|pnpm>", "package manager used to analyze licenses (default: auto detect)")
+  .option("-c, --config <path>", "config path. defaults to ./license-manager.config.js")
   .action((options) => {
     analyze({
       workspace: options.workspace || "",
@@ -24,6 +25,7 @@ program
       allowLicenses: options.allowLicense || [],
       allowPackages: options.allowPackage || [],
       packageManager: options.packageManager || "",
+      configFilePath: options.config || "",
     });
   });
 
@@ -41,6 +43,7 @@ program
   .option("-o, --output <string>", "output file name")
   .option("--json", "output in JSON format")
   .option("-m, --packageManager <npm|pnpm>", "package manager used to extract licenses (default: auto detect)")
+  .option("-c, --config <path>", "config path. defaults to ./license-manager.config.js")
   .action((options) => {
     extract({
       workspace: options.workspace || "",
@@ -51,6 +54,7 @@ program
       output: options.output || "",
       json: !!options.json,
       packageManager: options.packageManager || "",
+      configFilePath: options.config || "",
     });
   });
 
