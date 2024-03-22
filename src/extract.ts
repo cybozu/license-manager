@@ -18,10 +18,15 @@ export type ExtractArgs = {
   packageManager: string;
 };
 
-export const extract = async (cliArgs: ExtractArgs) => {
+export const extract = async ({
+  configFilePath,
+  ...cliArgs
+}: ExtractArgs & {
+  configFilePath?: string;
+}) => {
   console.log("🔪 Extract licenses...");
 
-  const config = await loadConfigScript();
+  const config = await loadConfigScript(configFilePath);
   const args = mergeConfig(cliArgs, config);
   const dependencies = await aggregate(
     args.packageManager,

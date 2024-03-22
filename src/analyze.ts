@@ -14,10 +14,15 @@ export type AnalyzeArgs = {
   packageManager: string;
 };
 
-export const analyze = async (cliArgs: AnalyzeArgs) => {
+export const analyze = async ({
+  configFilePath,
+  ...cliArgs
+}: AnalyzeArgs & {
+  configFilePath?: string;
+}) => {
   console.log("🔎 Analyzing dependencies...");
 
-  const config = await loadConfigScript();
+  const config = await loadConfigScript(configFilePath);
   const args = mergeConfig(cliArgs, config);
   const unreadLicenseTextPattern = [/.*/];
   const dependencies = await aggregate(

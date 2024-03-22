@@ -37,5 +37,7 @@ describe("extract : override-license-text", () => {
     expect(console.log).toBeCalledWith(pc.green(`✅ Extracted to ${expectedOutputPath}`));
 
     expect(memfs.readFileSync(expectedOutputPath).toString("utf-8")).toMatchSnapshot();
+
+    expect(console.log).toBeCalledWith("💡 Detected license-manager.config.js");
   });
 });
