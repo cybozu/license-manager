@@ -2,9 +2,8 @@ import fs from "fs";
 import path from "path";
 import { Config } from "../types";
 
-export const loadConfigScript = async (
-  relativeConfigPath: string = "license-manager.config.js"
-): Promise<Partial<Config>> => {
+export const loadConfigScript = async (relativeConfigPathArg?: string): Promise<Partial<Config>> => {
+  const relativeConfigPath = relativeConfigPathArg || "license-manager.config.js";
   const configPath = path.join(process.cwd(), relativeConfigPath);
 
   if (!fs.existsSync(configPath)) {
