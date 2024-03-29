@@ -25,7 +25,7 @@ program
       allowLicenses: options.allowLicense || [],
       allowPackages: options.allowPackage || [],
       packageManager: options.packageManager || "",
-      configFilePath: options.config || "",
+      configFilePath: options.config,
     });
   });
 
