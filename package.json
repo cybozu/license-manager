@@ -1,6 +1,6 @@
 {
   "name": "@cybozu/license-manager",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "CLI tool for license management",
   "author": "Cybozu, Inc.",
   "license": "Apache-2.0",
