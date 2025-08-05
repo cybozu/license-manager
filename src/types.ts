@@ -9,15 +9,26 @@ export type RawDependency = {
 
 export type RawPnpmLicenses = Record<
   string,
-  Array<{
-    name: string;
-    version: string;
-    path: string;
-    license: string;
-    author: string;
-    homepage: string;
-    description: string;
-  }>
+  Array<
+    | {
+        name: string;
+        version: string;
+        path: string;
+        license: string;
+        author: string;
+        homepage: string;
+        description: string;
+      }
+    | {
+        name: string;
+        version: string;
+        paths: string[];
+        license: string;
+        author: string;
+        homepage: string;
+        description: string;
+      }
+  >
 >;
 
 export type Dependency = RawDependency & {
