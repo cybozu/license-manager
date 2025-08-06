@@ -31,13 +31,19 @@ export const getDependenciesForPnpm = async (option: string, cwd: string, worksp
   const rawLicenses = JSON.parse(stdout) as RawPnpmLicenses;
   return Object.values(rawLicenses).flatMap((deps) =>
     deps.flatMap<RawDependency>((dep) => {
-      const { name, license, version } = dep;
+      const { name, license } = dep;
 
       if ("paths" in dep) {
-        return dep.paths.map((path) => ({ name, license, version, path }));
+        const { versions } = dep;
+        return dep.paths.map((path, index) => ({
+          name,
+          license,
+          version: versions[index],
+          path,
+        }));
       }
 
-      return [{ name, license, version, path: dep.path }];
+      return [{ name, license, version: dep.version, path: dep.path }];
     })
   );
 };

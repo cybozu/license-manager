@@ -21,7 +21,7 @@ export type RawPnpmLicenses = Record<
       }
     | {
         name: string;
-        version: string;
+        versions: string[];
         paths: string[];
         license: string;
         author: string;
