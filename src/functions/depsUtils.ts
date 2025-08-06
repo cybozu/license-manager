@@ -6,7 +6,16 @@ export const getLicense = (dep: Dependency, overrideLicense?: Config["overrideLi
     if (result) return result;
   }
   if (typeof dep.license === "string") return dep.license;
+  // Some old packages used license objects or licenses property containing an array.
+  // ref. https://docs.npmjs.com/cli/v10/configuring-npm/package-json#license
   if (typeof dep.license === "object") return dep.license.type;
+  if (Array.isArray(dep.licenses)) {
+    if (dep.licenses.length > 1) {
+      const joined = dep.licenses.map((l) => l.type).join(" OR ");
+      return `(${joined})`;
+    }
+    return dep.licenses.at(0)?.type ?? "";
+  }
   return "";
 };
 

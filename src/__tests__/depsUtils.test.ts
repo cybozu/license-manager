@@ -8,6 +8,17 @@ describe("getLicense", () => {
   it("it should return license", () => {
     expect(getLicense(deps({ license: "MIT" }))).toBe("MIT");
     expect(getLicense(deps({ license: { type: "MIT", url: "https://example.com" } }))).toBe("MIT");
+    expect(getLicense(deps({ licenses: [{ type: "MIT", url: "https://example.com" }] }))).toBe("MIT");
+    expect(
+      getLicense(
+        deps({
+          licenses: [
+            { type: "MIT", url: "https://example.com/MIT" },
+            { type: "ISC", url: "https://example.com/ISC" },
+          ],
+        })
+      )
+    ).toBe("(MIT OR ISC)");
   });
 
   it("verify overrideLicense", () => {
