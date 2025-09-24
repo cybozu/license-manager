@@ -1,5 +1,7 @@
 import { exec as actualExec } from "node:child_process";
 import { promisify } from "node:util";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import pc from "picocolors";
 import { RawDependency, RawPnpmLicenses } from "../types";
 
@@ -29,21 +31,58 @@ export const getDependenciesForPnpm = async (option: string, cwd: string, worksp
   }
 
   const rawLicenses = JSON.parse(stdout) as RawPnpmLicenses;
-  return Object.values(rawLicenses).flatMap((deps) =>
-    deps.flatMap<RawDependency>((dep) => {
+  const promises = Object.values(rawLicenses).flatMap((deps) =>
+    deps.flatMap<Promise<RawDependency>>((dep) => {
       const { name, license } = dep;
 
       if ("paths" in dep) {
         const { versions } = dep;
-        return dep.paths.map((path, index) => ({
-          name,
-          license,
-          version: versions[index],
-          path,
-        }));
+        return dep.paths.map(async (path, index) => {
+          const { author, repository } = await getPackageJsonFields(path);
+          return {
+            name,
+            license,
+            version: versions[index],
+            path,
+            ...(author && { author }),
+            ...(repository && { repository }),
+          };
+        });
       }
 
-      return [{ name, license, version: dep.version, path: dep.path }];
+      return [
+        (async () => {
+          const { author, repository } = await getPackageJsonFields(dep.path);
+          return {
+            name,
+            license,
+            version: dep.version,
+            path: dep.path,
+            ...(author && { author }),
+            ...(repository && { repository }),
+          };
+        })(),
+      ];
     })
   );
+
+  return Promise.all(promises);
+};
+
+const getPackageJsonFields = async (
+  packagePath: string
+): Promise<{ author?: RawDependency["author"]; repository?: RawDependency["repository"] }> => {
+  const packageJsonPath = join(packagePath, "package.json");
+
+  try {
+    const packageJsonContent = await readFile(packageJsonPath, "utf-8");
+    const packageJson = JSON.parse(packageJsonContent);
+    return {
+      author: packageJson.author,
+      repository: packageJson.repository,
+    };
+  } catch (error) {
+    // If we can't read the package.json, just skip adding author and repository
+    return { author: undefined, repository: undefined };
+  }
 };

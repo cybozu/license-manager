@@ -88,7 +88,7 @@ const outputDepsAsText = (deps: Dependency[], output: string) => {
     .map((dep) => {
       const values = [dep.name];
       dep.author && values.push(`author: ${getAuthor(dep)}`);
-      dep.repository?.url && values.push(`repository: ${getRepository(dep)}`);
+      dep.repository && values.push(`repository: ${getRepository(dep)}`);
       dep.license && values.push(`license: ${dep.license}`);
       dep.licenseText && values.push(`${dep.licenseText}`);
       dep.apacheNotice && values.push(`${dep.apacheNotice}`);
