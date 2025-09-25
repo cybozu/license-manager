@@ -1,5 +1,12 @@
 {
   "name": "baz",
   "version": "1.2.3",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Diana Developer"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:example/baz.git"
+  }
 }

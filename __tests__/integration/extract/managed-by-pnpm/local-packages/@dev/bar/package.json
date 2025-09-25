@@ -1,5 +1,13 @@
 {
   "name": "@dev/bar",
   "version": "1.2.3",
-  "license": "BSD"
+  "license": "BSD",
+  "author": {
+    "name": "Jane Smith",
+    "email": "jane@example.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/example/bar.git"
+  }
 }
