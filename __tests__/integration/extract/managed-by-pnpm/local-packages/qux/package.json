@@ -1,5 +1,7 @@
 {
   "name": "qux",
   "version": "4.5.6",
-  "license": "MIT"
+  "license": "MIT",
+  "author": "Eve Engineer <eve@example.org>",
+  "repository": "https://gitlab.com/example/qux"
 }

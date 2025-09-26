@@ -1,5 +1,10 @@
 {
   "name": "bar",
   "version": "1.2.3",
-  "license": "BSD"
+  "license": "BSD",
+  "author": {
+    "name": "Charlie Coder",
+    "url": "https://charliecoder.io"
+  },
+  "repository": "example/bar"
 }

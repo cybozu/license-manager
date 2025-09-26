@@ -3,7 +3,7 @@ export type RawDependency = {
   version: string;
   author?: string | { name: string; email?: string; url?: string };
   license?: string | { type: string; url: string };
-  repository?: { url: string };
+  repository?: string | { url: string };
   path: string;
 };
 

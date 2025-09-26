@@ -2,6 +2,8 @@
 
 exports[`extract : managed-by-pnpm > extract all licenses 1`] = `
 "bar
+author: Charlie Coder(https://charliecoder.io)
+repository: example/bar
 license: BSD
 bar - license text - line1
 bar - license text - line2
@@ -9,6 +11,8 @@ bar - license text - line2
 
 
 baz
+author: Diana Developer
+repository: ssh://git@github.com:example/baz.git
 license: Apache-2.0
 baz - license text - line1
 baz - license text - line2
@@ -16,13 +20,24 @@ baz - license text - line2
 
 
 foo
+author: Alice Developer
+repository: git://github.com/example/foo.git
 license: MIT
 foo - license text - line1
 foo - license text - line2
 
 
 
+no-author-repo
+license: MIT
+no-author-repo - license text - line1
+no-author-repo - license text - line2
+
+
+
 qux
+author: Eve Engineer <eve@example.org>
+repository: https://gitlab.com/example/qux
 license: MIT
 qux - license text - line1
 qux - license text - line2
@@ -31,6 +46,8 @@ qux - license text - line2
 
 exports[`extract : managed-by-pnpm > extract licenses by excluding specified packages 1`] = `
 "bar
+author: Charlie Coder(https://charliecoder.io)
+repository: example/bar
 license: BSD
 bar - license text - line1
 bar - license text - line2
@@ -38,13 +55,24 @@ bar - license text - line2
 
 
 foo
+author: Alice Developer
+repository: git://github.com/example/foo.git
 license: MIT
 foo - license text - line1
 foo - license text - line2
 
 
 
+no-author-repo
+license: MIT
+no-author-repo - license text - line1
+no-author-repo - license text - line2
+
+
+
 qux
+author: Eve Engineer <eve@example.org>
+repository: https://gitlab.com/example/qux
 license: MIT
 qux - license text - line1
 qux - license text - line2
@@ -53,6 +81,8 @@ qux - license text - line2
 
 exports[`extract : managed-by-pnpm > extract specified licenses 1`] = `
 "baz
+author: Diana Developer
+repository: ssh://git@github.com:example/baz.git
 license: Apache-2.0
 baz - license text - line1
 baz - license text - line2
@@ -60,13 +90,24 @@ baz - license text - line2
 
 
 foo
+author: Alice Developer
+repository: git://github.com/example/foo.git
 license: MIT
 foo - license text - line1
 foo - license text - line2
 
 
 
+no-author-repo
+license: MIT
+no-author-repo - license text - line1
+no-author-repo - license text - line2
+
+
+
 qux
+author: Eve Engineer <eve@example.org>
+repository: https://gitlab.com/example/qux
 license: MIT
 qux - license text - line1
 qux - license text - line2

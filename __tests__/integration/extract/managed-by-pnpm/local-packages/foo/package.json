@@ -1,5 +1,9 @@
 {
   "name": "foo",
   "version": "1.2.3",
-  "license": "MIT"
+  "license": "MIT",
+  "author": "Alice Developer",
+  "repository": {
+    "url": "git://github.com/example/foo.git"
+  }
 }
