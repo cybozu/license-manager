@@ -28,6 +28,13 @@ foo - license text - line2
 
 
 
+no-author-repo
+license: MIT
+no-author-repo - license text - line1
+no-author-repo - license text - line2
+
+
+
 qux
 author: Eve Engineer <eve@example.org>
 repository: https://gitlab.com/example/qux
@@ -56,6 +63,13 @@ foo - license text - line2
 
 
 
+no-author-repo
+license: MIT
+no-author-repo - license text - line1
+no-author-repo - license text - line2
+
+
+
 qux
 author: Eve Engineer <eve@example.org>
 repository: https://gitlab.com/example/qux
@@ -81,6 +95,13 @@ repository: git://github.com/example/foo.git
 license: MIT
 foo - license text - line1
 foo - license text - line2
+
+
+
+no-author-repo
+license: MIT
+no-author-repo - license text - line1
+no-author-repo - license text - line2
 
 
 

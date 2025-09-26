@@ -7,6 +7,7 @@
     "bar": "file:local-packages/bar",
     "baz": "file:local-packages/baz",
     "foo": "file:local-packages/foo",
-    "qux": "file:local-packages/qux"
+    "qux": "file:local-packages/qux",
+    "no-author-repo": "file:local-packages/no-author-repo"
   }
 }

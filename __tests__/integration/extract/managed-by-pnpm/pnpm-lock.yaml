@@ -17,6 +17,9 @@ dependencies:
   qux:
     specifier: file:local-packages/qux
     version: file:local-packages/qux
+  no-author-repo:
+    specifier: file:local-packages/no-author-repo
+    version: file:local-packages/no-author-repo
 
 packages:
 
@@ -38,4 +41,9 @@ packages:
   file:local-packages/qux:
     resolution: {directory: local-packages/qux, type: directory}
     name: qux
+    dev: false
+
+  file:local-packages/no-author-repo:
+    resolution: {directory: local-packages/no-author-repo, type: directory}
+    name: no-author-repo
     dev: false
