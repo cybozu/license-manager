@@ -15,7 +15,6 @@
     "lint": "eslint .",
     "test": "vitest",
     "format": "prettier --write src/**/*",
-    "release": "npm run build && npm publish",
     "prepare": "husky install"
   },
   "devDependencies": {
