@@ -20,16 +20,16 @@ Thank you for considering contributing to the license-manager project! We apprec
 Before you start contributing, make sure you have the following installed:
 
 - Node.js (>=18.14.0)
-- npm (>=9.3.1)
+- pnpm (>=9.0.0)
 
 ### Setting Up the Development Environment
 
-To develop locally, fork the repository and clone it in your local machine. 
+To develop locally, fork the repository and clone it in your local machine.
 After cloning, you start developing the following steps.
 
-1. Run `npm ci` to install all dependencies
-2. Run `npm run build` to build the project
-3. Run `npm run test` to check if all tests will pass
+1. Run `pnpm install` to install all dependencies
+2. Run `pnpm run build` to build the project
+3. Run `pnpm run test` to check if all tests will pass
 
 Other useful commands are added in the `package.json`! We recommend that you check them out during development.
 
@@ -62,7 +62,7 @@ We encourage you to submit pull requests to contribute code to the project. Here
 
 There are a few things to note:
 
-- Before committing, run `npm run lint` to make sure there are no lint errors.
+- Before committing, run `pnpm run lint` to make sure there are no lint errors.
 - All tests are located in `src/__tests__` and `__tests__`. Please check them to see how the tests are written.
 - Your commit message should suit to the format of [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
