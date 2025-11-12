@@ -1,13 +1,12 @@
 __mocks__/
 __tests__/
 .github/
-.husky/
 src/
-.commitlintrc.js
-.eslintignore
-.eslintrc.js
+eslint.config.js
 .prettierrc
 FOR_DEVELOPMENT.md
 tsconfig.json
 tsconfig.build.json
-vitest.config.ts
+vitest.config.mts
+release-please-config.json
+.release-please-manifest.json

@@ -63,14 +63,14 @@ export const getDependenciesForPnpm = async (option: string, cwd: string, worksp
           };
         })(),
       ];
-    })
+    }),
   );
 
   return Promise.all(promises);
 };
 
 const getPackageJsonFields = async (
-  packagePath: string
+  packagePath: string,
 ): Promise<{ author?: RawDependency["author"]; repository?: RawDependency["repository"] }> => {
   const packageJsonPath = join(packagePath, "package.json");
 

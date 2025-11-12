@@ -1,5 +1,4 @@
 // ※ You need to run npm run build
-// eslint-disable-next-line node/no-missing-require, node/no-unpublished-require
 const { isMatchPackage, isMatchName, isMatchVersion } = require("../../../../dist/index");
 
 module.exports = {

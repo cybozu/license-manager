@@ -28,7 +28,7 @@ describe("getLicenseText", () => {
   });
 
   it("verify override license page url", async () => {
-    type Response = Awaited<ReturnType<typeof import("undici").fetch>>;
+    type Response = Awaited<ReturnType<typeof fetch>>;
     vi.spyOn(glob, "sync").mockReturnValue([]);
 
     // license page url is undefined
@@ -45,7 +45,7 @@ describe("getLicenseText", () => {
       licenseText: "override",
     });
     expect(spyLog).toHaveBeenCalledWith(
-      pc.green("✅ dummy-library@1.0 license page override-url was successfully loaded")
+      pc.green("✅ dummy-library@1.0 license page override-url was successfully loaded"),
     );
     spyLog.mockRestore();
 

@@ -1,6 +1,6 @@
-import { analyze } from "@/analyze";
-import { consoleMock } from "__tests__/helpers/consoleMock";
-import { processMock } from "__tests__/helpers/processMock";
+import { analyze } from "../../../../src/analyze";
+import { consoleMock } from "../../../helpers/consoleMock";
+import { processMock } from "../../../helpers/processMock";
 import pc from "picocolors";
 import { beforeEach, describe, expect, it } from "vitest";
 
@@ -38,7 +38,7 @@ describe("analyze : basic-cases", () => {
         ...analyzeDefaultOption,
         allowLicenses: ["MIT", "Apache-2.0"],
         allowPackages: [],
-      })
+      }),
     ).rejects.toThrowError("process.exit()");
 
     expect(console.error).toBeCalledWith(pc.red("🚨 Unconfirmed license found"));
@@ -54,7 +54,7 @@ describe("analyze : basic-cases", () => {
         ...analyzeDefaultOption,
         allowLicenses: [],
         allowPackages: ["foo", "baz", "@dev/foo", "@dev/bar@1.2.2", "@dev/baz"],
-      })
+      }),
     ).rejects.toThrowError("process.exit()");
 
     expect(console.error).toBeCalledWith(pc.red("🚨 Unconfirmed license found"));

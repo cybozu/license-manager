@@ -6,7 +6,7 @@ import { fetcher } from "./fetcher";
 
 export const getLicenseText = async (
   dep: Dependency,
-  overrideLicenseText?: Config["overrideLicenseText"]
+  overrideLicenseText?: Config["overrideLicenseText"],
 ): Promise<{
   licenseText: string;
   licenseTextPath?: string;
@@ -61,7 +61,7 @@ export const getLicenseText = async (
 };
 
 export const getApacheNotice = (
-  dep: Dependency
+  dep: Dependency,
 ): {
   apacheNotice: string;
   apacheNoticePath?: string;

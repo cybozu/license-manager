@@ -1,12 +1,15 @@
-import { ExtractArgs, extract } from "@/extract";
-import { consoleMock } from "__tests__/helpers/consoleMock";
-import { processMock } from "__tests__/helpers/processMock";
+import { ExtractArgs, extract } from "../../../../src/extract";
+import { consoleMock } from "../../../helpers/consoleMock";
+import { processMock } from "../../../helpers/processMock";
 import { fs as memfs, vol } from "memfs";
 import path from "path";
 import pc from "picocolors";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-vi.mock("fs");
+vi.mock("fs", async () => {
+  const { createFsMock } = await import("../../../helpers/fsMock.js");
+  return createFsMock();
+});
 
 describe("extract : override-license-text", () => {
   beforeEach(() => {

@@ -31,7 +31,7 @@ export const analyze = async ({
     args.cwd,
     args.workspace,
     unreadLicenseTextPattern,
-    config
+    config,
   );
 
   const errors: Array<{ name: string; license: string }> = [];

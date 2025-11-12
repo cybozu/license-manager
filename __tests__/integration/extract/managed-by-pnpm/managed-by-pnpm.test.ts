@@ -1,6 +1,6 @@
-import { ExtractArgs, extract } from "@/extract";
-import { consoleMock } from "__tests__/helpers/consoleMock";
-import { processMock } from "__tests__/helpers/processMock";
+import { ExtractArgs, extract } from "../../../../src/extract";
+import { consoleMock } from "../../../helpers/consoleMock";
+import { processMock } from "../../../helpers/processMock";
 import { fs as memfs, vol } from "memfs";
 import path from "path";
 import pc from "picocolors";
@@ -8,7 +8,10 @@ import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vite
 import { promisify } from "node:util";
 import { exec as actualExec } from "node:child_process";
 
-vi.mock("fs");
+vi.mock("fs", async () => {
+  const { createFsMock } = await import("../../../helpers/fsMock.js");
+  return createFsMock();
+});
 
 describe("extract : managed-by-pnpm", () => {
   beforeAll(async () => {
@@ -77,7 +80,7 @@ describe("extract : managed-by-pnpm", () => {
       extract({
         ...extractDefaultOption,
         query: ":root > [name^=@dev/]",
-      })
+      }),
     ).rejects.toThrowError("query cannot be specified when the package manager is pnpm.");
   });
 
