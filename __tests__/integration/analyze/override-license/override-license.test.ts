@@ -1,6 +1,6 @@
-import { analyze } from "@/analyze";
-import { consoleMock } from "__tests__/helpers/consoleMock";
-import { processMock } from "__tests__/helpers/processMock";
+import { analyze } from "../../../../src/analyze";
+import { consoleMock } from "../../../helpers/consoleMock";
+import { processMock } from "../../../helpers/processMock";
 import pc from "picocolors";
 import { beforeEach, describe, expect, it } from "vitest";
 

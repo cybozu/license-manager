@@ -11,7 +11,7 @@ program
   .option("--cwd <string>", "current working directory for npm query")
   .option(
     "-w, --workspace <string>",
-    "workspace option for npm query (please see: https://docs.npmjs.com/cli/v8/commands/npm-query#workspace)"
+    "workspace option for npm query (please see: https://docs.npmjs.com/cli/v8/commands/npm-query#workspace)",
   )
   .option("-l, --allowLicense <string...>", "allow licenses")
   .option("-p, --allowPackage <string...>", "allow packages (allowed without license)")
@@ -36,7 +36,7 @@ program
   .option("--cwd <string>", "current working directory for npm query")
   .option(
     "-w, --workspace <string>",
-    "workspace option for npm query (please see: https://docs.npmjs.com/cli/v8/commands/npm-query#workspace)"
+    "workspace option for npm query (please see: https://docs.npmjs.com/cli/v8/commands/npm-query#workspace)",
   )
   .option("-l, --extractLicense <string...>", "licenses to extract")
   .option("-p, --excludePackage <string...>", "packages to be excluded from extraction")

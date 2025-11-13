@@ -34,7 +34,7 @@ export const extract = async ({
     args.cwd,
     args.workspace,
     args.excludePackages,
-    config
+    config,
   );
 
   const targetDependencies = dependencies.filter((dep) => {

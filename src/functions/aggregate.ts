@@ -9,7 +9,7 @@ export const aggregate = async (
   cwd: string,
   workspace: string,
   unreadLicenseTextPattern: Array<string | RegExp>,
-  config: Config
+  config: Config,
 ): Promise<Dependency[]> => {
   let deps;
   if (packageManager === "pnpm") {
@@ -34,6 +34,6 @@ export const aggregate = async (
         ...(licenseTextData || {}),
         ...(apacheNotice || {}),
       };
-    })
+    }),
   );
 };

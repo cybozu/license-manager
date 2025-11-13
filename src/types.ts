@@ -54,6 +54,6 @@ export type Config = {
   };
   overrideLicense?: (dep: Dependency) => string | undefined;
   overrideLicenseText?: (
-    dep: Dependency
+    dep: Dependency,
   ) => string | undefined | { licenseText: string | undefined } | { licensePageUrl: string | undefined };
 };
