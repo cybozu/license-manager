@@ -1,5 +1,5 @@
 import fs from "fs";
-import glob from "glob";
+import { glob } from "glob";
 import pc from "picocolors";
 import { Config, Dependency } from "../types";
 import { fetcher } from "./fetcher";
