@@ -18,6 +18,7 @@
   "devDependencies": {
     "@cybozu/eslint-config": "^25.0.0",
     "@tsconfig/node-lts": "^22.0.2",
+    "@types/node": "^25.4.0",
     "eslint": "^9.39.1",
     "memfs": "^4.50.0",
     "prettier": "^3.6.2",
@@ -27,7 +28,7 @@
   },
   "dependencies": {
     "commander": "^14.0.2",
-    "glob": "^11.0.3",
+    "glob": "^11.1.0",
     "picocolors": "^1.1.1"
   },
   "engines": {
