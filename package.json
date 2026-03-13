@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@cybozu/eslint-config": "^25.0.1",
-    "@tsconfig/node-lts": "^22.0.4",
+    "@tsconfig/node-lts": "^24.0.0",
     "@types/node": "^25.4.0",
     "eslint": "^9.39.4",
     "memfs": "^4.50.0",
