@@ -22,8 +22,8 @@ importers:
         specifier: ^25.0.1
         version: 25.0.1(@typescript-eslint/utils@8.57.0(eslint@9.39.4)(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint@9.39.4)(prettier@3.6.2)(typescript@5.9.3)
       '@tsconfig/node-lts':
-        specifier: ^22.0.4
-        version: 22.0.4
+        specifier: ^24.0.0
+        version: 24.0.0
       '@types/node':
         specifier: ^25.4.0
         version: 25.4.0
@@ -783,8 +783,8 @@ packages:
     peerDependencies:
       eslint: '>=8.40.0'
 
-  '@tsconfig/node-lts@22.0.4':
-    resolution: {integrity: sha512-5eAeCX6l/EYe6H2UAw5nBgjfAgdlsR+lSp8YNNGwz+ixoi7JfJ5bOQvsiEhxGm5bOZFVF+cJSIj4tanpCCRMIw==}
+  '@tsconfig/node-lts@24.0.0':
+    resolution: {integrity: sha512-8mSTqWwCd6aQpvxSrpQlMoA9RiUZSs7bYhL5qsLXIIaN9HQaINeoydrRu/Y7/fws4bvfuyhs0BRnW9/NI8tySg==}
 
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
@@ -2978,7 +2978,7 @@ snapshots:
       - supports-color
       - typescript
 
-  '@tsconfig/node-lts@22.0.4': {}
+  '@tsconfig/node-lts@24.0.0': {}
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
