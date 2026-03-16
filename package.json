@@ -1,6 +1,6 @@
 {
   "name": "@cybozu/license-manager",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "CLI tool for license management",
   "author": "Cybozu, Inc.",
   "license": "Apache-2.0",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "commander": "^14.0.3",
-    "glob": "^13.0.6",
+    "glob": "^11.1.0",
     "picocolors": "^1.1.1"
   },
   "engines": {
