@@ -21,7 +21,7 @@
     "@types/node": "^25.5.2",
     "eslint": "^9.39.4",
     "memfs": "^4.57.1",
-    "prettier": "^3.8.1",
+    "prettier": "^3.8.2",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "vitest": "^4.1.4"
