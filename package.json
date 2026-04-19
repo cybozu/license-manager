@@ -20,7 +20,7 @@
     "@tsconfig/node-lts": "^24.0.0",
     "@types/node": "^25.5.2",
     "eslint": "^9.39.4",
-    "memfs": "^4.57.1",
+    "memfs": "^4.57.2",
     "prettier": "^3.8.3",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
