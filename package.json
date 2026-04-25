@@ -35,7 +35,7 @@
     "npm": ">=9.3.1",
     "pnpm": ">=8.10.0"
   },
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@10.33.1",
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
