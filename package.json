@@ -19,7 +19,7 @@
     "@cybozu/eslint-config": "25.0.1",
     "@tsconfig/node-lts": "24.0.0",
     "@types/node": "25.8.0",
-    "eslint": "9.39.4",
+    "eslint": "10.6.0",
     "memfs": "4.57.8",
     "prettier": "3.8.5",
     "tsx": "4.22.4",
