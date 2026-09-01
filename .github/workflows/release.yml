@@ -5,7 +5,6 @@ on:
     branches:
       - main
 
-
 permissions:
   contents: write # Required for release-please
   issues: write # Required for release-please
@@ -23,6 +22,8 @@ jobs:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
         if: ${{ steps.release.outputs.release_created }}
       - name: Install pnpm
         uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
@@ -31,6 +32,10 @@ jobs:
         with:
           node-version: 'lts/*'
           registry-url: 'https://registry.npmjs.org'
+        if: ${{ steps.release.outputs.release_created }}
+      - uses: flatt-security/setup-takumi-guard-npm@6d4182745c1e474c35a023573c2612c085be45a4 # v1.2.0
+        with:
+          bot-id: ${{ vars.TAKUMI_GUARD_BOT_ID }}
         if: ${{ steps.release.outputs.release_created }}
       - run: pnpm install --frozen-lockfile
         if: ${{ steps.release.outputs.release_created }}
