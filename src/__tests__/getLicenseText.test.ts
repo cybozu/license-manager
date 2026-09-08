@@ -1,6 +1,6 @@
 import { glob } from "glob";
 import pc from "picocolors";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { Dependency } from "../types";
 import * as fetcher from "./../functions/fetcher";
 import { getLicenseText } from "./../functions/getLicenseText";

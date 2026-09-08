@@ -39,7 +39,7 @@ export const getLicenseText = async (
         }
         console.error(pc.red(`${dep.name}@${dep.version} license page ${licensePageUrl} not found`));
         return null;
-      } catch (e) {
+      } catch {
         console.error(pc.red(`${dep.name}@${dep.version} license page ${licensePageUrl} not accessed`));
         return null;
       }

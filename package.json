@@ -16,15 +16,16 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@cybozu/eslint-config": "25.0.1",
-    "@tsconfig/node-lts": "24.0.0",
-    "@types/node": "25.9.4",
-    "eslint": "9.39.4",
-    "memfs": "4.57.8",
-    "prettier": "3.9.4",
-    "tsx": "4.22.4",
-    "typescript": "6.0.3",
-    "vitest": "4.1.9"
+    "@cybozu/eslint-config": "26.0.0",
+    "@tsconfig/node-lts": "24.0.1",
+    "@types/node": "26.4.0",
+    "@typescript/native": "npm:typescript@7.0.2",
+    "eslint": "10.9.1",
+    "memfs": "4.68.2",
+    "prettier": "3.9.6",
+    "tsx": "4.23.13",
+    "typescript": "npm:@typescript/typescript6@6.0.2",
+    "vitest": "4.1.11"
   },
   "dependencies": {
     "commander": "15.0.0",
