@@ -1,9 +1,9 @@
-const presetNodeTypescriptPrettier = require("@cybozu/eslint-config/flat/presets/node-typescript-prettier");
+import presetNodeTypescriptPrettier from "@cybozu/eslint-config/presets/node-typescript-prettier";
 
 /**
  * @type { import("eslint").Linter.Config[] }
  */
-module.exports = [
+export default [
   ...presetNodeTypescriptPrettier,
   {
     rules: {
@@ -19,6 +19,12 @@ module.exports = [
       "n/no-unpublished-require": "off",
       "n/no-unpublished-import": "off",
       "n/no-extraneous-import": "off",
+    },
+  },
+  {
+    files: ["eslint.config.mjs"],
+    rules: {
+      "n/no-unpublished-import": "off",
     },
   },
   {

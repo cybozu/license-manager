@@ -81,7 +81,7 @@ const getPackageJsonFields = async (
       author: packageJson.author,
       repository: packageJson.repository,
     };
-  } catch (error) {
+  } catch {
     // If we can't read the package.json, just skip adding author and repository
     return { author: undefined, repository: undefined };
   }

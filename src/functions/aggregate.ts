@@ -22,6 +22,8 @@ export const aggregate = async (
   }
 
   return Promise.all(
+    // RawDependency is gradually filled up to Dependency in this map, so it cannot be typed strictly here
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     deps.map(async (dep: any): Promise<Dependency> => {
       const license = getLicense(dep, config.overrideLicense);
       const unreadLicenseText = unreadLicenseTextPattern.some((pattern) => isMatchPackage(dep, pattern));
